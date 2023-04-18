@@ -1,0 +1,22 @@
+python ./scripts/run_finetune.py \
+    --name="MACE_model" \
+    --train_file="/data/test_cp2k/cp2k_two_double/trainset/train.xyz" \
+    --valid_file="/data/test_cp2k/cp2k_two_double/validset/valid.xyz" \
+    --test_file="/data/test_cp2k/cp2k_two_double/testset/test.xyz" \
+    --config_type_weights='{"Default":1.0}' \
+    --model="ScaleShiftMACE" \
+    --hidden_irreps='128x0e + 128x1o' \
+    --r_max=6.0 \
+    --batch_size=5\
+    --E0s='{1:0,16:0,42:0}'\
+    --max_num_epochs=15000 \
+    --ema \
+    --ema_decay=0.99 \
+    --amsgrad \
+    --restart_latest \
+    --patience=50\
+    --forces_weight=0\
+    --results_dir="/data/test_cp2k/cp2k_two_double/freeze/resultsft"\
+    --checkpoints_dir="/data/test_cp2k/cp2k_two_double/freeze/checkpointsft"\
+    --device=cuda
+   
